@@ -1,0 +1,36 @@
+package com.pratica.criandosoap;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.xml.namespace.QName;
+
+import com.pratica.criandosoap.servicocons.CertidaoNascimento;
+
+import jakarta.xml.ws.Service;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws Exception 
+    {
+
+    URL url = new URL("http://localhost:8081/servico/certidao?wsdl"); 
+    
+    QName qname = new QName("http://servico.criandosoap.pratica.com/", "CertidaoNascimentoImplService" );
+    
+    Service service = Service.create(url, qname);
+    
+    CertidaoNascimento certidao = service.getPort(CertidaoNascimento.class);
+    
+    int idade = certidao.calcularIdade("10/10/1990");
+    String diaSemana = certidao.diaSemanaNascimento("10/10/1990");
+    
+    System.out.println("Idade: " + idade);
+    System.out.println("Dia da semana: " +  diaSemana);
+    	
+    }
+}

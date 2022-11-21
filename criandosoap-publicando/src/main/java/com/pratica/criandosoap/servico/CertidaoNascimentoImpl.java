@@ -1,0 +1,68 @@
+package com.pratica.criandosoap.servico;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import jakarta.jws.WebService;
+
+//SIB - SERVICE IMPLEMENTATION BEAN
+
+//O @WebService informa de qual interface o serviço está sendo implementado
+@WebService(endpointInterface = "com.pratica.criandosoap.servico.CertidaoNascimento")
+public class CertidaoNascimentoImpl implements CertidaoNascimento {
+
+	public int calcularIdade(String idade) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		int idadeCalculada = 0;
+		
+		try {
+			Calendar dataNascimento = Calendar.getInstance();
+			Date idadeDate = sdf.parse(idade);
+			dataNascimento.setTime(idadeDate);
+			
+			Calendar hoje = Calendar.getInstance();
+			idadeCalculada = hoje.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR);
+			
+			//se ainda não chegou o aniversario
+			if(hoje.get(Calendar.MONTH) < dataNascimento.get(Calendar.MONTH)) {
+				idadeCalculada--;
+			} else {
+				if(hoje.get(Calendar.MONTH) == dataNascimento.get(Calendar.MONTH)
+						&& hoje.get(Calendar.DAY_OF_MONTH) < dataNascimento.get(Calendar.DAY_OF_MONTH)) {
+					idadeCalculada--;
+				}
+			}
+			
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return idadeCalculada;
+	}
+
+	public String diaSemanaNascimento(String idade) {
+
+		String dias[] = { "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábada" };
+		int dia = 0;
+		
+		//O SimpleDateFormat é uma string 
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		try {
+			Calendar dataNascimento = Calendar.getInstance();
+			Date idadeDate = sdf.parse(idade);
+			dataNascimento.setTime(idadeDate);
+			dia = dataNascimento.get(Calendar.DAY_OF_WEEK);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		/*Será feito o calculo do (dia - 1) o resultado é equivalente a posicao onde
+		esta o dia da semana*/ 
+		return dias[dia - 1];
+	}
+
+}

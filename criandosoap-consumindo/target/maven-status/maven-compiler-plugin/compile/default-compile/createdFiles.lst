@@ -1,0 +1,3 @@
+com\pratica\criandosoap\App.class
+com\pratica\criandosoap\servicocons\CertidaoNascimento.class
+com\pratica\criandosoap\servicocons\CertidaoNascimentoImplService.class

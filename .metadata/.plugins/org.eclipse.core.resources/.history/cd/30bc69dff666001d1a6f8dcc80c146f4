@@ -1,0 +1,5 @@
+package com.pratica.criandosoap.servico;
+
+public interface CertidaoNascimento {
+
+}

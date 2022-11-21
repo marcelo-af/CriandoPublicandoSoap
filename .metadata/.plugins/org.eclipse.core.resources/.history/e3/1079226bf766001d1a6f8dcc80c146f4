@@ -1,0 +1,15 @@
+package com.pratica.criandosoap.servico;
+
+public class CertidaoNascimentoImpl implements CertidaoNascimento {
+
+	public int calcularIdade(String idade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public String diaSemanaNascimento(String idade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

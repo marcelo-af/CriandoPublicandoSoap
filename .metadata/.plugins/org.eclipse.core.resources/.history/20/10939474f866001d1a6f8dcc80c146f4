@@ -1,0 +1,9 @@
+package com.pratica.criandosoap.servico;
+
+//SEI - SERVICE ENDPOINT INTERFACE
+public interface CertidaoNascimento {
+	
+	public int calcularIdade(String idade);
+	public String diaSemanaNascimento(String idade);
+
+}

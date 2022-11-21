@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\m.alves.ferreira\Documents\Criando-WebServiceSoap\.metadata\.plugins\org.eclipse.jdt.core
+3610876114.index
+1865797976.index
+3941058512.index

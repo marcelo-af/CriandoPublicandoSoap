@@ -1,0 +1,8 @@
+package com.pratica.criandosoap.servico;
+
+public interface CertidaoNascimento {
+	
+	public int calcularIdade(String idade);
+	public String diaSemanaNascimento(String idade);
+
+}
