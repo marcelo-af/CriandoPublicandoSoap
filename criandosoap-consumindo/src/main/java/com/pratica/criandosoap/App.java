@@ -31,7 +31,7 @@ public class App
     /*O service pega a url e o qname para poder se conectar com o serviço*/
     Service service = Service.create(url, qname);
     
-    /*O service.getPort cria um proxy na aplicacao*/
+    /*O service.getPort cria um proxy na aplicacao para consumir o serviço publicado*/
     CertidaoNascimento certidao = service.getPort(CertidaoNascimento.class);
     
     int idade = certidao.calcularIdade("10/10/1990");
